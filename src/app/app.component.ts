@@ -66,12 +66,10 @@ export class AppComponent implements OnInit {
 
       response.content.forEach((element: any) => {
         let credentialSubject = element.selfDescription.verifiableCredential.credentialSubject;
-        let organizationName = credentialSubject['merlot:orgaName']['@value'];
+        let organizationName = credentialSubject['gax-trust-framework:legalName']['@value'];
         this.organizations.push(organizationName);
 
-        let id = credentialSubject['@id']
-        let organizationLegalName = credentialSubject['gax-trust-framework:legalName']['@value'];
-        this.organizationMap.set(organizationName, { 'id': id, 'legalName': organizationLegalName })
+        this.organizationMap.set(organizationName, credentialSubject['@id'])
       });
 
       this.organization = this.organizations[0];
@@ -133,20 +131,16 @@ export class AppComponent implements OnInit {
           value: this.lastName,
         },
         {
-          name: 'Name der Organisation',
+          name: 'Organisation',
           value: this.organization,
         },
         {
-          name: 'Rechtsbindender Name der Organisation',
-          value: this.organizationMap.get(this.organization).legalName,
-        },
-        {
           name: 'ID der Organisation',
-          value: this.organizationMap.get(this.organization).id,
+          value: this.organizationMap.get(this.organization),
         },
         {
-          name: 'Rolle',
-          value: this.roleType + '_' + this.organizationMap.get(this.organization).id,
+          name: 'Rollentyp',
+          value: this.roleType,
         },
         {
           name: 'ID',
