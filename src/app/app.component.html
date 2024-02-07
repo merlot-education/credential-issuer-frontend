@@ -1,0 +1,72 @@
+<form (ngSubmit)="onSubmit()" *ngIf="showForm">
+  <!-- <label for="email">Email:</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" [(ngModel)]="email" required> -->
+
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" [(ngModel)]="firstName"
+    required>
+
+
+
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required [(ngModel)]="lastName">
+
+  <label for="lastName">E-Mail:</label>
+  <input type="text" id="email" name="email" placeholder="user@organization.com" required [(ngModel)]="email"
+    required="">
+
+  <!-- <label for="gender">Gender:</label>
+  <select id="gender" name="gender" [(ngModel)]="gender">
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="O">Other</option>
+  </select> -->
+
+  <!-- <label for="birthDate">Birthdate:</label>
+  <input type="text" id="birthDate" name="birthDate" placeholder="Enter your birthdate YYYY-MM-DD" required
+    [(ngModel)]="birthDate"> -->
+
+  <label for="middleName">Roles:</label>
+  <select id="middleName" name="middleName" [(ngModel)]="middleName">
+    <option value="dataport">Dataport</option>
+    <option value="capgemini">Capgemini</option>
+    <option value="gaia">Gaia</option>
+  </select>
+
+  <div style="display: none;">
+    <label for="roleType">Role Type</label>
+    <select id="roleType" name="roleType" [(ngModel)]="roleType">
+      <option value="OrgLegRep">Legal Representative</option>
+      <option value="FedAdmin">Federation Administrator</option>
+    </select>
+
+    <label for="role">Organization</label>
+    <select id="role" name="role" [(ngModel)]="organization">
+      <option *ngFor="let org of organizations" [value]="org.replace(' ', '')">{{ org.split('_')[0] }}</option>
+    </select>
+
+    {{roleType}}_{{organization}}
+  </div>
+
+  <label for="subjectDid">Your DID: (do not change for testing)</label>
+  <input type="text" id="subjectDid" name="subjectDid" placeholder="Enter your DID" [(ngModel)]="subjectDid">
+
+  <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="connectionId && connectionStatus !== 'trusted' && !showForm">
+  <qrcode [qrdata]="invitationUrl" [width]="512" [errorCorrectionLevel]="'M'"></qrcode>
+  Scan this code to connect.
+
+  Connection status: {{connectionStatus}}
+</div>
+
+<div *ngIf="connectionStatus === 'trusted' && credentialId === ''">
+  Connection sucessfull, your credential has been requested.
+</div>
+
+<div *ngIf="credentialId">
+  Connection sucessfull, your credential has been requested.<br>
+  Credential state: {{credentialState}}
+</div>
