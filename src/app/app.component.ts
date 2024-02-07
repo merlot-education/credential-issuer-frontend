@@ -135,16 +135,12 @@ export class AppComponent implements OnInit {
           value: this.organization,
         },
         {
-          name: 'ID der Organisation',
-          value: this.organizationMap.get(this.organization),
-        },
-        {
-          name: 'Rollentyp',
+          name: 'Role',
           value: this.roleType,
         },
         {
           name: 'ID',
-          value: this.email,
+          value: this.organizationMap.get(this.organization),
         },
         {
           name: 'subjectDID',
