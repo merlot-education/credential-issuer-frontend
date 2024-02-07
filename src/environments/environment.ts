@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  orgasAPI: 'https://api.dev.merlot-education.eu/organisations/?page=0&size=9',
+  orgasAPI: 'https://api.dev.merlot-education.eu/organisations/?page=0&size=1000000',
   // invitationUrlApi: 'http://213.165.77.158:3003/v1/invitation-url?alias=trust',
   invitationUrlApi: 'https://secure-routes.jumpy.dev/invitation-url.php',
   // invitationUrlApi:

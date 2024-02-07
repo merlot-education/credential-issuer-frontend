@@ -27,27 +27,23 @@
   <input type="text" id="birthDate" name="birthDate" placeholder="Enter your birthdate YYYY-MM-DD" required
     [(ngModel)]="birthDate"> -->
 
-  <label for="middleName">Roles:</label>
+  <!-- <label for="middleName">Roles:</label>
   <select id="middleName" name="middleName" [(ngModel)]="middleName">
     <option value="dataport">Dataport</option>
     <option value="capgemini">Capgemini</option>
     <option value="gaia">Gaia</option>
+  </select> -->
+  
+  <label for="roleType">Role Type</label>
+  <select id="roleType" name="roleType" [(ngModel)]="roleType">
+    <option value="OrgLegRep">Legal Representative</option>
+    <option value="FedAdmin">Federation Administrator</option>
   </select>
 
-  <div style="display: none;">
-    <label for="roleType">Role Type</label>
-    <select id="roleType" name="roleType" [(ngModel)]="roleType">
-      <option value="OrgLegRep">Legal Representative</option>
-      <option value="FedAdmin">Federation Administrator</option>
-    </select>
-
-    <label for="role">Organization</label>
-    <select id="role" name="role" [(ngModel)]="organization">
-      <option *ngFor="let org of organizations" [value]="org.replace(' ', '')">{{ org.split('_')[0] }}</option>
-    </select>
-
-    {{roleType}}_{{organization}}
-  </div>
+  <label for="role">Organization</label>
+  <select id="role" name="role" [(ngModel)]="organization">
+    <option *ngFor="let org of organizations" [value]="org">{{ org }}</option>
+  </select>
 
   <label for="subjectDid">Your DID: (do not change for testing)</label>
   <input type="text" id="subjectDid" name="subjectDid" placeholder="Enter your DID" [(ngModel)]="subjectDid">

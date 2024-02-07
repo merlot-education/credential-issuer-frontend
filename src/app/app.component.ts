@@ -34,10 +34,11 @@ export class AppComponent implements OnInit {
 
   organization = '';
   organizations: string[] = [];
+  organizationMap = new Map();
 
   roleType = 'OrgLegRep';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http
@@ -64,13 +65,13 @@ export class AppComponent implements OnInit {
       console.log(response);
 
       response.content.forEach((element: any) => {
-        this.organizations.push(
-          `${
-            element.selfDescription.verifiableCredential.credentialSubject[
-              'merlot:orgaName'
-            ]['@value']
-          }_${element.id.split(':')[1]}`
-        );
+        let credentialSubject = element.selfDescription.verifiableCredential.credentialSubject;
+        let organizationName = credentialSubject['merlot:orgaName']['@value'];
+        this.organizations.push(organizationName);
+
+        let id = credentialSubject['@id']
+        let organizationLegalName = credentialSubject['gax-trust-framework:legalName']['@value'];
+        this.organizationMap.set(organizationName, { 'id': id, 'legalName': organizationLegalName })
       });
 
       this.organization = this.organizations[0];
@@ -132,12 +133,20 @@ export class AppComponent implements OnInit {
           value: this.lastName,
         },
         {
-          name: 'Organisation',
-          value: 'Merlot',
+          name: 'Name der Organisation',
+          value: this.organization,
         },
         {
-          name: 'Role',
-          value: this.middleName,
+          name: 'Rechtsbindender Name der Organisation',
+          value: this.organizationMap.get(this.organization).legalName,
+        },
+        {
+          name: 'ID der Organisation',
+          value: this.organizationMap.get(this.organization).id,
+        },
+        {
+          name: 'Rolle',
+          value: this.roleType + '_' + this.organizationMap.get(this.organization).id,
         },
         {
           name: 'ID',
