@@ -140,7 +140,7 @@ export class AppComponent implements OnInit {
         },
         {
           name: 'ID',
-          value: this.organizationMap.get(this.organization),
+          value: this.email,
         },
         {
           name: 'subjectDID',
@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
         },
         {
           name: 'issuerDID',
-          value: 'SOMEDIDISS',
+          value:  this.organizationMap.get(this.organization),
         },
 
         {
