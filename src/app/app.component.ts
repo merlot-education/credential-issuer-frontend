@@ -34,10 +34,11 @@ export class AppComponent implements OnInit {
 
   organization = '';
   organizations: string[] = [];
+  organizationMap = new Map();
 
   roleType = 'OrgLegRep';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http
@@ -64,13 +65,11 @@ export class AppComponent implements OnInit {
       console.log(response);
 
       response.content.forEach((element: any) => {
-        this.organizations.push(
-          `${
-            element.selfDescription.verifiableCredential.credentialSubject[
-              'merlot:orgaName'
-            ]['@value']
-          }_${element.id.split(':')[1]}`
-        );
+        let credentialSubject = element.selfDescription.verifiableCredential.credentialSubject;
+        let organizationName = credentialSubject['gax-trust-framework:legalName']['@value'];
+        this.organizations.push(organizationName);
+
+        this.organizationMap.set(organizationName, credentialSubject['@id'])
       });
 
       this.organization = this.organizations[0];
@@ -133,11 +132,11 @@ export class AppComponent implements OnInit {
         },
         {
           name: 'Organisation',
-          value: 'Merlot',
+          value: this.organization,
         },
         {
           name: 'Role',
-          value: this.middleName,
+          value: this.roleType,
         },
         {
           name: 'ID',
@@ -149,7 +148,7 @@ export class AppComponent implements OnInit {
         },
         {
           name: 'issuerDID',
-          value: 'SOMEDIDISS',
+          value:  this.organizationMap.get(this.organization),
         },
 
         {
