@@ -1,38 +1,14 @@
 <form (ngSubmit)="onSubmit()" *ngIf="showForm">
-  <!-- <label for="email">Email:</label>
-  <input type="email" id="email" name="email" placeholder="Enter your email" [(ngModel)]="email" required> -->
-
   <label for="firstName">First Name:</label>
   <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" [(ngModel)]="firstName"
     required>
 
-
-
-
   <label for="lastName">Last Name:</label>
   <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required [(ngModel)]="lastName">
 
-  <label for="lastName">E-Mail:</label>
+  <label for="email">E-Mail:</label>
   <input type="text" id="email" name="email" placeholder="user@organization.com" required [(ngModel)]="email"
     required="">
-
-  <!-- <label for="gender">Gender:</label>
-  <select id="gender" name="gender" [(ngModel)]="gender">
-    <option value="M">Male</option>
-    <option value="F">Female</option>
-    <option value="O">Other</option>
-  </select> -->
-
-  <!-- <label for="birthDate">Birthdate:</label>
-  <input type="text" id="birthDate" name="birthDate" placeholder="Enter your birthdate YYYY-MM-DD" required
-    [(ngModel)]="birthDate"> -->
-
-  <!-- <label for="middleName">Roles:</label>
-  <select id="middleName" name="middleName" [(ngModel)]="middleName">
-    <option value="dataport">Dataport</option>
-    <option value="capgemini">Capgemini</option>
-    <option value="gaia">Gaia</option>
-  </select> -->
   
   <label for="roleType">Role Type</label>
   <select id="roleType" name="roleType" [(ngModel)]="roleType">
