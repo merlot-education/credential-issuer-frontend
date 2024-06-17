@@ -26,5 +26,5 @@ export const environment = {
   // credentialDefinitionId:
   //   '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:90163:MerlotFederationLoginLongerWith240',
   credentialDefinitionId:
-    'dxmeeRVwfAQecNy1AXuws:3:CL:640854:MerlotFederationLoginIntegration',
+    '7KuDTpQh3GJ7Gp6kErpWvM:3:CL:126723:logincreddef',
 };
