@@ -66,13 +66,20 @@ export class AppComponent implements OnInit {
 
       response.content.forEach((element: any) => {
         let credentials = element.selfDescription.verifiableCredential;
-        for (let vc of credentials) {
-          if (!Array.isArray(vc.credentialSubject) && vc.credentialSubject.type === "merlot:MerlotLegalParticipant") {
-            let organizationName = vc.credentialSubject['merlot:legalName'];
-            this.organizations.push(organizationName);
-            this.organizationMap.set(organizationName, vc.credentialSubject['id'])
+        if (Array.isArray(credentials)) {
+          for (let vc of credentials) {
+            if (!Array.isArray(vc.credentialSubject) && vc.credentialSubject.type === "merlot:MerlotLegalParticipant") {
+              let organizationName = vc.credentialSubject['merlot:legalName'];
+              this.organizations.push(organizationName);
+              this.organizationMap.set(organizationName, vc.credentialSubject['id'])
+            }
           }
+        } else {
+          let organizationName = credentials.credentialSubject['gax-trust-framework:legalName']["@value"];
+          this.organizations.push(organizationName);
+          this.organizationMap.set(organizationName, credentials.credentialSubject['@id'])
         }
+        
       });
 
       this.organization = this.organizations[0];
