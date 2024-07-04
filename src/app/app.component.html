@@ -28,7 +28,7 @@
 </form>
 
 <div *ngIf="connectionId && connectionStatus !== 'trusted' && !showForm">
-  <qrcode [qrdata]="invitationUrl" [width]="512" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode [qrdata]="invitationUrl" [width]="qrcodeDimension" [errorCorrectionLevel]="'M'"></qrcode>
   Scan this code to connect.
 
   Connection status: {{connectionStatus}}
