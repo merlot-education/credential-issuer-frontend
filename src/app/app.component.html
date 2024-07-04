@@ -32,6 +32,11 @@
   Scan this code to connect.
 
   Connection status: {{connectionStatus}}
+
+  <br><br>
+  <button (click)="qrcodeDimension = qrcodeDimension * 0.95">Shrink QR</button>
+  <br>
+  <button (click)="qrcodeDimension = qrcodeDimension * 1.05">Grow QR</button>
 </div>
 
 <div *ngIf="connectionStatus === 'trusted' && credentialId === ''">
