@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
 
   roleType = 'OrgLegRep';
 
+  qrcodeDimension = 512;
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
