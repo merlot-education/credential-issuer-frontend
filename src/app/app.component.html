@@ -44,7 +44,15 @@
 </form>
 
 <div *ngIf="connectionId && connectionStatus !== 'trusted' && !showForm">
-  <qrcode [qrdata]="invitationUrl" [width]="qrcodeDimension" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode 
+    [qrdata]="invitationUrl" 
+    [width]="qrcodeDimension" 
+    [errorCorrectionLevel]="'M'"
+    [imageSrc]="'./assets/merlot-pcm-opaque.png'"
+    [imageHeight]="75"
+    [imageWidth]="75"
+    >
+  </qrcode>
   Scan this code to connect.
 
   Connection status: {{connectionStatus}}
