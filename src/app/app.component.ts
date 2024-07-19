@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
 
    @HostListener('window:resize', ['$event'])
    onResize(event: any) {
-      this.qrcodeDimension = Math.min(512, window.innerWidth*0.8);
+      this.qrcodeDimension = Math.min(512, window.innerWidth*0.9);
    }
 
   ngOnInit(): void {
