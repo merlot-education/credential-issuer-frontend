@@ -59,11 +59,11 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.qrcodeDimension = 512;
-    this.onResize();
+    this.onResize(undefined);
    }
 
    @HostListener('window:resize', ['$event'])
-   onResize(event?) {
+   onResize(event: any) {
       this.qrcodeDimension = Math.min(512, window.innerWidth*0.8);
    }
 
