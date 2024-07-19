@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'app-root',
@@ -54,9 +55,17 @@ export class AppComponent implements OnInit {
 
   roleType = 'OrgLegRep';
 
-  qrcodeDimension = 512;
+  qrcodeDimension: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.qrcodeDimension = 512;
+    this.onResize();
+   }
+
+   @HostListener('window:resize', ['$event'])
+   onResize(event?) {
+      this.qrcodeDimension = Math.min(512, window.innerWidth*0.8);
+   }
 
   ngOnInit(): void {
     this.http
