@@ -44,8 +44,10 @@
 </form>
 
 <div *ngIf="connectionId && connectionStatus !== 'trusted' && !showForm">
-  <div class="qrcodeImage demoBorder">
+  <div class="qrcodeImage">
     <qrcode 
+      [cssClass]="'demoBorder'"
+      [margin]="4"
       [qrdata]="invitationUrl" 
       [width]="qrcodeDimension" 
       [errorCorrectionLevel]="'M'"
