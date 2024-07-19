@@ -52,8 +52,8 @@
       [width]="qrcodeDimension" 
       [errorCorrectionLevel]="'M'"
       [imageSrc]="'./assets/merlot-pcm-opaque.png'"
-      [imageHeight]="150"
-      [imageWidth]="150"
+      [imageHeight]="150 * (qrcodeDimension/512)"
+      [imageWidth]="150 * (qrcodeDimension/512)"
       >
     </qrcode>
   </div>
