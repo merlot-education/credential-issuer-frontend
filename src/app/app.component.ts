@@ -14,12 +14,11 @@
  *  limitations under the License.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { environment } from '../environments/environment';
-import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'app-root',
