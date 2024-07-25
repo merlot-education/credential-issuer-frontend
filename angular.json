@@ -84,14 +84,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "credential-issuer-frontend:build:production"
+            "demo": {
+              "browserTarget": "credential-issuer-frontend:build:demo"
             },
-            "development": {
-              "browserTarget": "credential-issuer-frontend:build:development"
+            "dev": {
+              "browserTarget": "credential-issuer-frontend:build:dev"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
